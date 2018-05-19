@@ -1,0 +1,75 @@
+.job-link:hover {
+  color: #3b3630;
+  text-decoration: none;
+
+  .job {
+    -ms-transform: scale(1.05, 1.05); /* IE 9 */
+    -webkit-transform: scale(1.05, 1.05); /* Safari */
+    transform: scale(1.05, 1.05);
+  }
+}
+
+.job {
+  text-decoration: none;
+  color: #3b3630;
+  display: block;
+  margin: 0 0 15px 0;
+  padding: 25px 15px;
+  background-color: #f0e1c2;
+  text-align: center;
+  border-radius: 5px;
+  transition: all .2s ease-in-out;
+
+  .wanted {
+    font-family: 'Western';
+    font-size: 36px;
+    color: #3b3630;
+    line-height: 36px;
+  }
+
+  .section {
+    margin-top: 10px;
+    font-size: 10px;
+    color: #9C8770;
+    text-align: center;
+
+    .heading {
+      font-size: 12px;
+      color: #9C8770;
+      margin-bottom: 2px;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .badge {
+      font-weight: 400;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 8px;
+      display: inline-block;
+      background-color: #9C8770;
+      color: #f0e1c2;
+      border-radius: 20px;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+  }
+
+  .date {
+    font-size: 12px;
+    color: #9C8770;
+  }
+
+  .position {}
+
+  .reward {
+    font-family: 'Western';
+    font-size: 46px;
+    color: #3b3630;
+    line-height: 36px;
+  }
+}

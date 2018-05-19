@@ -1,0 +1,54 @@
+.row
+  .col-md-6.offset-md-3.text-center.mb-5.mt-3
+    h1 Preview
+
+.row.justify-content-md-center
+  .col-lg-3
+    = render 'job', job: @job
+
+
+    .text-center
+      - if @job.call_to_action_url.present? && @job.call_to_action_email.present?
+        = link_to 'Refer a candidate', @job.call_to_action_url, class: 'btn btn-outline-dark btn-block mt-4', target: '_blank'
+        p.mt-2 You can also refer a candidate by sending an email to #{mail_to @job.call_to_action_email}
+
+      - elsif @job.call_to_action_url.present?
+        = link_to 'Refer a candidate', @job.call_to_action_url, class: 'btn btn-primary btn-lg btn-block mt-4', target: '_blank'
+
+      - elsif @job.call_to_action_email.present?
+        = mail_to @job.call_to_action_email, 'Refer a candidate', class: 'btn btn-outline-dark btn-block mt-4',
+                                                                data: {toggle: 'popover',
+                                                                       trigger: 'hover',
+                                                                       placement: 'top',
+                                                                       content: "Refer a candidate by sending an email to #{@job.call_to_action_email}"}
+  .col-lg-5
+    h3 Company
+    div = @job.company_name
+    div = link_to @job.company_website.gsub(/http:\/\/|https:\/\//, ''), @job.company_website
+
+    h3.mt-3 Details
+    p = @job.details
+
+    h3.mt-3 Reward payment rules
+    p = @job.reward_rules
+
+.row
+  .col-md-6.offset-md-3.text-center.mt-5
+    = link_to 'Edit your post', new_job_path(job: params[:job].permit!), class: 'btn btn-outline-dark mr-3'
+    = form_for @job, html: {style: 'display: inline;'} do |form|
+      = form.hidden_field :title
+      = form.hidden_field :required_skills
+      = form.hidden_field :details
+      = form.hidden_field :company_name
+      = form.hidden_field :company_website
+      = form.hidden_field :company_contact_email
+      = form.hidden_field :reward_currency
+      = form.hidden_field :reward_amount
+      = form.hidden_field :reward_rules
+      = form.hidden_field :remote_allowed
+      = form.hidden_field :remote_timezone
+      = form.hidden_field :remote_timezone_offset
+      = form.hidden_field :office_location
+      = form.hidden_field :call_to_action_url
+      = form.hidden_field :call_to_action_email
+      = form.submit 'Send for review', class: 'btn btn-primary btn-lg'

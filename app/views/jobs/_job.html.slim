@@ -1,0 +1,26 @@
+.job
+  .date = job.approved_at.strftime('%b %e') if job.approved_at?
+
+  .wanted WANTED
+  .position = job.title
+
+  .section.required-skills
+    .heading required skills
+    ul
+      - job.required_skills.each do |skill|
+        .badge = skill
+
+  .section.location
+    .heading location
+    - if job.office_location.present?
+      .badge = job.office_location
+
+    - if job.office_location.present? && job.remote_allowed?
+      span or
+
+    - if job.remote_allowed?
+      .badge Remote (#{job.remote_timezone}&plusmn;#{job.remote_timezone_offset})
+
+  .section
+    .heading reward
+    .reward = number_to_currency job.reward_amount, unit: Currency.find(job.reward_currency)[:unit]

@@ -1,0 +1,66 @@
+@import "bootstrap";
+
+@import 'modules/*';
+
+body {
+  background-color: #FFF0D1;
+}
+
+.alert.alert-validation {
+  background: rgba($form-feedback-invalid-color, .8);
+  border-color: $form-feedback-invalid-color;
+  color: #fff;
+}
+
+.form-group .required abbr, fieldset.required abbr {
+  color: red;
+  text-decoration: none;
+}
+
+.form-control {
+  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #aaa;
+      opacity: 0.5; /* Firefox */
+  }
+
+  &::-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #aaa;
+  }
+
+  &::-ms-input-placeholder { /* Microsoft Edge */
+    color: #aaa;
+  }
+}
+
+.has-error {
+  .invalid-feedback {
+    display: block;
+  }
+
+  .help-block {
+    color: $form-feedback-invalid-color;
+  }
+
+  label {
+    color: $form-feedback-invalid-color;
+  }
+
+  .form-control {
+    background: rgba($form-feedback-invalid-color, .8);
+    border-color: $form-feedback-invalid-color;
+    color: #fff;
+
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #fff;
+        opacity: 0.5; /* Firefox */
+    }
+
+    &::-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: #fff;
+    }
+
+    &::-ms-input-placeholder { /* Microsoft Edge */
+      color: #fff;
+    }
+  }
+}

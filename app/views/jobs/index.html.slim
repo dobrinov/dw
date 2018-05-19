@@ -1,0 +1,20 @@
+.text-center
+  h2
+    | The best
+    | &nbsp;
+    strike style="color: #9C8770" recruiters
+    | &nbsp;
+    | bounty hunters are here.
+
+p.text-center Get a recruitment bonus for referring a skillful software developer.
+
+.row.mb-4
+  .col-sm style="text-align: center;"
+    = link_to 'Post a job for <strike>$100/month</strike> FREE'.html_safe, new_job_path, class: 'btn btn-primary'
+
+- @jobs.each_slice(4) do |job_batch|
+  .row
+    - job_batch.each do |job|
+      .col-sm
+        = link_to job_path(job), class: 'job-link' do
+          = render 'job', job: job

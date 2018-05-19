@@ -1,0 +1,33 @@
+.row.justify-content-md-center
+  .col-md-8.mb-2
+    = link_to 'Back', jobs_path
+
+.row.justify-content-md-center
+  .col-lg-3
+    = render 'job', job: @job
+
+    .text-center
+      - if @job.call_to_action_url.present? && @job.call_to_action_email.present?
+        = link_to 'Refer a candidate', @job.call_to_action_url, class: 'btn btn-primary btn-lg btn-block mt-4', target: '_blank'
+        p.mt-2 You can also refer a candidate by sending an email to #{mail_to @job.call_to_action_email}
+
+      - elsif @job.call_to_action_url.present?
+        = link_to 'Refer a candidate', @job.call_to_action_url, class: 'btn btn-primary btn-lg btn-block mt-4', target: '_blank'
+
+      - elsif @job.call_to_action_email.present?
+        = mail_to @job.call_to_action_email, 'Refer a candidate', class: 'btn btn-primary btn-lg btn-block mt-4',
+                                                                data: {toggle: 'popover',
+                                                                       trigger: 'hover',
+                                                                       placement: 'top',
+                                                                       content: "Refer a candidate by sending an email to #{@job.call_to_action_email}"}
+
+  .col-lg-5
+    h3 Company
+    div = @job.company_name
+    div = link_to @job.company_website.gsub(/http:\/\/|https:\/\//, ''), @job.company_website
+
+    h3.mt-3 Details
+    p = @job.details
+
+    h3.mt-3 Reward payment rules
+    p = @job.reward_rules

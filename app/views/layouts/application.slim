@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title Dev Wanted
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    = stylesheet_link_tag    "application", media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag "application", 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  body
+    .container-fluid
+      .row
+        = link_to root_path, class: 'logo mt-3 mb-3' do
+          .secondary dev
+          .primary WANTED
+
+      - if flash[:notice].present?
+        .row.mb-3
+          .col-md-6.offset-md-3.text-center.mb-1.mt-3
+            .alert.alert-success = flash[:notice]
+
+      = yield
+
+      .row.mt-3.mb-3
+        .col-sm.text-center www.devwanted.com
+

@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Western';
+  src:font-url('western.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.logo {
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+
+  &:hover { text-decoration: none; }
+
+  .secondary {
+    display: inline-block;
+    background-color: #000000;
+    color: #FFF0D1;
+    padding: 3px 8px;
+    margin: 0;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 24px;
+    border-radius: 4px;
+  }
+
+  .primary {
+    font-family: 'Western';
+    color: #000000;
+    padding: 0;
+    margin: 3px 0 0 0;
+    font-size: 65px;
+    line-height: 60px;
+  }
+}

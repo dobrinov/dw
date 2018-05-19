@@ -1,0 +1,65 @@
+.row.mb-3
+  .col-md-6.offset-md-3.text-center.mb-1.mt-3
+    h1 Post a new job
+
+.row
+  .col-md-6.offset-md-3
+    = simple_form_for @job, url: preview_jobs_path, method: :get, html: { class: 'form-horizontal' } do |form|
+      fieldset
+        legend Details
+        = form.input :title, label: 'Job title', placeholder: 'Senior backend developer'
+        = form.input :required_skills, input_html: { value: form.object.required_skills.join(', ') }, placeholder: 'Comma-separated list of required skills for the position'
+        = form.input :details, as: :text, input_html: {rows: 5}, label: 'Additional details', placeholder: 'More details details about the position in free text'
+
+      fieldset
+        legend Company
+        = form.input :company_name, label: 'Name', placeholder: 'Your company or organization’s name'
+        = form.input :company_website, label: 'Website', placeholder: 'https://www.example.com/'
+        = form.input :company_contact_email, label: 'Email', placeholder: 'You will be notified on this email for events related with this post'
+
+      fieldset
+        legend Reward
+        .row
+          .col-3
+            = form.input :reward_currency, collection: Currency.all,
+                                           label: 'Currency',
+                                           label_method: -> (currency) { currency[:code] },
+                                           value_method: -> (currency) { currency[:code] },
+                                           include_blank: false
+
+
+          .col-9
+            = form.input :reward_amount, label: 'Amount', placeholder: 'The amount of the reward'
+
+      = form.input :reward_rules, label: 'Reward payment rules', placeholder: 'Describe how and when the award will be paid'
+
+      fieldset.required
+        legend
+          ' Office location
+          abbr *
+
+        .row
+          .col-md-4
+            = form.input :remote_allowed, as: :select, label: 'Remote allowed', include_blank: false, selected: 'false'
+          .col-md-4
+            = form.input :remote_timezone, label: 'Remote timezone', placeholder: 'e.g. PST'
+          .col-md-4
+            = form.input :remote_timezone_offset, collection: (0..10).map { |offset| ["±#{offset}", offset] }
+
+        .row
+          .col-md-12
+            = form.input :office_location, placeholder: 'e.g. San Francisco, California'
+
+      fieldset.required
+        legend
+          ' Where to refer a candidate?
+          abbr *
+        - if @job.errors[:call_to_action].any?
+          .alert.alert-validation = @job.errors[:call_to_action].first
+
+        = form.input :call_to_action_url, label: 'URL', placeholder: 'URL for refering a candidate'
+        = form.input :call_to_action_email, label: 'Email', placeholder: 'Email for refering a candidate'
+
+      .row.mt-3
+        .col-12.text-center
+          = form.submit 'Preview', class: 'btn btn-primary btn-lg'
