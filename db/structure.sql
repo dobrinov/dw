@@ -54,7 +54,6 @@ CREATE TABLE public.jobs (
     remote_timezone_offset character varying,
     office_location character varying,
     details character varying NOT NULL,
-    call_to_action_hint character varying,
     call_to_action_email character varying,
     call_to_action_url character varying,
     company_name character varying NOT NULL,

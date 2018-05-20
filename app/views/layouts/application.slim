@@ -22,5 +22,6 @@ html
       = yield
 
       .row.mt-3.mb-3
-        .col-sm.text-center www.devwanted.com
-
+        .col-sm.text-center
+          = mail_to 'deyan@devwanted.com', data: {toggle: 'tooltip', title: 'Get in touch'} do
+            = icon 'envelope-open-o'
