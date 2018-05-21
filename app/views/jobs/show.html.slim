@@ -1,3 +1,7 @@
+- title "Get #{localised_number_to_currency(@job.reward_currency, @job.reward_amount)} for refering a #{@job.title}"
+- set_meta_tags description: "#{@job.company_name} is looking for a #{@job.title} with experience in #{@job.required_skills.join(', ')}"
+- set_meta_tags keywords: %w[get referral bonus]
+
 .row.justify-content-md-center
   .col-md-8.mb-2
     = link_to 'Back', jobs_path
