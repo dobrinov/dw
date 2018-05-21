@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
   def index
     @jobs = Job.active.order(approved_at: :desc)
+    @blank_jobs_count = @jobs.size >=8 ? 0 : 8 - @jobs.size
   end
 
   def show

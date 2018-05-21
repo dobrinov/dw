@@ -18,3 +18,10 @@ p.text-center Get a recruitment bonus for referring a skilful software developer
       .col-sm
         = link_to job_path(job), class: 'job-link' do
           = render 'job', job: job
+
+- (1..@blank_jobs_count).each_slice(4) do |job_batch|
+  .row
+    - job_batch.each do |job|
+      .col-sm
+        = link_to new_job_path, class: 'job-link' do
+          = render 'blank_job'
