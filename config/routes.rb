@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   end
 
   get :contact, to: 'static_pages#contact'
+  get :sitemap, to: 'sitemaps#index', defaults: { format: 'xml' }
 
   root to: 'jobs#index'
 end
