@@ -23,4 +23,4 @@
 
   .section
     .heading reward
-    .reward = number_to_currency job.reward_amount, unit: Currency.find(job.reward_currency)[:unit]
+    .reward = localised_number_to_currency(job.reward_currency, job.reward_amount)

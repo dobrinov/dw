@@ -20,15 +20,14 @@
       fieldset
         legend Reward
         .row
-          .col-3
+          .col-4
             = form.input :reward_currency, collection: Currency.all,
                                            label: 'Currency',
-                                           label_method: -> (currency) { currency[:code] },
-                                           value_method: -> (currency) { currency[:code] },
-                                           include_blank: false
+                                           label_method: -> (currency) { "#{currency[:code]} - #{currency[:name]}"  },
+                                           value_method: -> (currency) { currency[:code] }
 
 
-          .col-9
+          .col-8
             = form.input :reward_amount, label: 'Amount', placeholder: 'The amount of the reward'
 
       = form.input :reward_rules, label: 'Reward payment rules', placeholder: 'Describe how and when the award will be paid'

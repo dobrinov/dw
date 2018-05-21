@@ -31,7 +31,7 @@ rewards = [
 8.times do
   Job.create! title: titles.sample,
               reward_amount: rewards.sample,
-              reward_currency: 'USD',
+              reward_currency: Currency.all.sample[:code],
               reward_rules: '50% upon start; 50% after six months',
               required_skills: skills.sample(rand(1..skills.size)),
               office_location: ['Sofia, Bulgaria', nil].sample,
