@@ -7,6 +7,17 @@ body {
   background-color: #FFF0D1;
 }
 
+.btn-social {
+  background-color: #f0e1c2;
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  border-radius: 21px;
+  padding: 0;
+  margin: 0 2px;
+  color: #9C8770;
+}
+
 .alert.alert-validation {
   background: rgba($form-feedback-invalid-color, .8);
   border-color: $form-feedback-invalid-color;
