@@ -24,13 +24,13 @@
   .col-lg-5
     h3 Company
     div = @job.company_name
-    div = link_to @job.company_website.gsub(/http:\/\/|https:\/\//, ''), @job.company_website
+    div = link_to @job.company_website, @job.company_website
 
     h3.mt-3 Details
     p = @job.details.html_safe
 
     h3.mt-3 Reward payment rules
-    p = @job.reward_rules
+    p = @job.reward_rules.html_safe
 
 .row
   .col-md-6.offset-md-3.text-center.mt-5
