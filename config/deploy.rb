@@ -50,3 +50,18 @@ namespace :puma do
 
   before :start, :make_dirs
 end
+
+namespace :deploy do
+  before :updated, 'yarn:install'
+end
+
+namespace :yarn do
+  desc 'Install yarn dependencies'
+  task :install do
+    on roles(:app) do
+      within release_path do
+        execute :yarn, :install
+      end
+    end
+  end
+end
