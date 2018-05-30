@@ -28,5 +28,5 @@ window.DevWanted =
       elements.each ->
         iterator(name, this, object)
 
-$(document).on 'turbolinks:load', ->
+$(document).ready ->
   DevWanted.initialize()
