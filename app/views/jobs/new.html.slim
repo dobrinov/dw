@@ -34,7 +34,7 @@
           .col-8
             = form.input :reward_amount, label: 'Amount', placeholder: 'The amount of the reward'
 
-      = form.input :reward_rules, label: 'Reward payment rules', placeholder: 'Describe how and when the award will be paid'
+      = form.input :reward_rules, as: :text, input_html: {rows: 5, class: 'js-wysiwyg'}, label: 'Reward payment rules', placeholder: 'Describe how and when the award will be paid'
 
       fieldset.required
         legend
