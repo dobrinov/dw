@@ -27,7 +27,7 @@
     div = link_to @job.company_website.gsub(/http:\/\/|https:\/\//, ''), @job.company_website
 
     h3.mt-3 Details
-    p = @job.details
+    p = @job.details.html_safe
 
     h3.mt-3 Reward payment rules
     p = @job.reward_rules
@@ -51,4 +51,4 @@
       = form.hidden_field :office_location
       = form.hidden_field :call_to_action_url
       = form.hidden_field :call_to_action_email
-      = form.submit 'Send for review', class: 'btn btn-primary btn-lg'
+      = form.submit 'Submit job', class: 'btn btn-primary btn-lg'

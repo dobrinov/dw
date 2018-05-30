@@ -31,7 +31,7 @@
     div = link_to @job.company_website.gsub(/http:\/\/|https:\/\//, ''), @job.company_website
 
     h3.mt-3 Details
-    p = @job.details
+    p = @job.details.html_safe
 
     h3.mt-3 Reward payment rules
     p = @job.reward_rules

@@ -13,7 +13,7 @@
         legend Details
         = form.input :title, label: 'Job title', placeholder: 'Senior backend developer'
         = form.input :required_skills, input_html: { value: form.object.required_skills.join(', ') }, placeholder: 'Comma-separated list of required skills for the position'
-        = form.input :details, as: :text, input_html: {rows: 5}, label: 'Additional details', placeholder: 'More details details about the position in free text'
+        = form.input :details, as: :text, input_html: {rows: 5, class: 'js-wysiwyg'}, label: 'Additional details', placeholder: 'More details details about the position in free text'
 
       fieldset
         legend Company
