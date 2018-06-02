@@ -62,7 +62,8 @@ CREATE TABLE public.jobs (
     approved_at timestamp without time zone,
     sent_for_review_at timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    expired_at timestamp without time zone
 );
 
 
@@ -132,6 +133,7 @@ ALTER TABLE ONLY public.schema_migrations
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
-('20180503090417');
+('20180503090417'),
+('20180602081249');
 
 

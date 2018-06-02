@@ -18,21 +18,21 @@ class Job < ApplicationRecord
   validate :valid_location, :valid_call_to_action
 
   class << self
+    def approved
+      where.not approved_at: nil
+    end
+
     def active
-      where 'approved_at > ?', 1.month.ago
-    end
-
-    def unapproved
-      where approved_at: nil
-    end
-
-    def awaiting_review
-      unapproved.where.not sent_for_review_at: nil
+      where(expired_at: nil).where 'approved_at > ?', 1.month.ago
     end
   end
 
   def approve
     touch :approved_at
+  end
+
+  def expired?
+    expired_at?
   end
 
   private

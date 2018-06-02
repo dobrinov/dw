@@ -5,7 +5,12 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.find params[:id]
+    @job = Job.approved.find params[:id]
+
+    redirect_to expired_job_path(@job) and return if @job.expired?
+  end
+
+  def expired
   end
 
   def new
